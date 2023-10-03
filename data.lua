@@ -1,0 +1,27 @@
+KDO = require 'prototypes.data-util'
+
+--[[  optional ]] require 'prototypes.entity.assembling-machine'
+--[[  optional ]] require 'prototypes.entity.chemical'
+--[[  optional ]] require 'prototypes.entity.electric-furnace'
+--[[  optional ]] require 'prototypes.entity.mining-drills'
+--[[  optional ]] require 'prototypes.entity.nuclear'
+--[[ mandatory ]] require 'prototypes.entity.resource'
+--[[  optional ]] require 'prototypes.entity.steam'
+
+--[[ mandatory ]] require 'prototypes.item.compact-raw-rare-metals'
+--[[ mandatory ]] require 'prototypes.item.fluoride'
+--[[ mandatory ]] require 'prototypes.item.liquid-imersite'
+--[[ mandatory ]] require 'prototypes.item.yellowcake'
+
+--[[ mandatory ]] require 'prototypes.recipe.coal-liquefaction'
+--[[ mandatory ]] require 'prototypes.recipe.fluoride'
+--[[ mandatory ]] require 'prototypes.recipe.liquid-imersite'
+--[[ mandatory ]] require 'prototypes.recipe.mineral-water'
+--[[ mandatory ]] require 'prototypes.recipe.raw-imersite'
+--[[ mandatory ]] require 'prototypes.recipe.raw-rare-metals'
+
+--[[  optional ]] require 'prototypes.technology.braking-force'
+--[[ mandatory ]] require 'prototypes.technology.coal-liquefaction'
+--[[ mandatory ]] require 'prototypes.technology.fluoride'
+--[[  optional ]] require 'prototypes.technology.inserter-capacity'
+--[[  optional ]] require 'prototypes.technology.worker-robot-speed'

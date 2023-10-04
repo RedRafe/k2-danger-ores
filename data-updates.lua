@@ -1,3 +1,5 @@
+--[[ mandatory ]] require 'prototypes.there-is-no-spoon'
+
 --[[ mandatory ]] require 'prototypes.recipe.uranium-processing'
 --[[ mandatory ]] require 'prototypes.recipe.uranium-processing-2'
 

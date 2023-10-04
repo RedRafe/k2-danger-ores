@@ -56,18 +56,6 @@ local furnace2_tech = {
 data.raw["furnace"]["electric-furnace"].next_upgrade = "electric-furnace-2"
 data.raw["furnace"]["electric-furnace"].fast_replaceable_group = "electric-furnace"
 
---[[
-data.raw.recipe["kr-advanced-assembling-machine"].ingredients =  {
-    { "electric-furnace-2", 2 },
-    { "imersium-beam", 20 },
-    { "steel-beam", 80 },
-    { "rare-metals", 80 },
-    { "copper-plate", 60 },
-    { "electronic-components", 20 },
-    { "energy-control-unit", 10 },
-}
-]]
-
 data:extend{furnace2_item, furnace2, furnace2_recipe, furnace2_tech}
 
 KDO.replace_ingredient("kr-advanced-assembling-machine", "electric-furnace", "electric-furnace-2", 2)

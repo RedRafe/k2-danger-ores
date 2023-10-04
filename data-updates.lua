@@ -1,5 +1,7 @@
 --[[ mandatory ]] require 'prototypes.there-is-no-spoon'
 
+--[[ mandatory ]] require 'prototypes.entity.intergalactic-transceiver'
+
 --[[ mandatory ]] require 'prototypes.recipe.uranium-processing'
 --[[ mandatory ]] require 'prototypes.recipe.uranium-processing-2'
 

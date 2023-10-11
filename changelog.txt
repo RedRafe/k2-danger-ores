@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
-Version: 0.1.1
-Date: 2023-10-10
+Version: 0.2.0
+Date: 2023-10-11
   Changes:
   - Added Electrolysis Mk.2
   - Added stacked matter conversion recipes for Deadlock Belt-boxes & Loaders mod
@@ -15,6 +15,7 @@ Date: 2023-10-10
     - Assembling machine 4
   - Reduced chlorine consumption in "compact-rare-metals > raw-rare-metals" recipe
   - Replaced "raw-rare-metals" with "compact-raw-rare-metals" in matter conversion recipes
+  - Default settings: NO belts extra speed
   Fixes:
   - Fixed upgrade planner for electric mining drills
   - Fixed steam & nuclear stats of Mk.2 entities to be the same ratio of Mk.1

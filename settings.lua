@@ -33,7 +33,7 @@ data:extend{
 		name = 'k2-danger-ores:increase_belt_speed',
 		type = 'bool-setting',
 		setting_type = 'startup',
-		default_value = true,
+		default_value = false,
 		order = 'g'
 	},
 	{

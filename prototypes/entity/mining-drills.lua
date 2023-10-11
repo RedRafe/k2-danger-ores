@@ -9,45 +9,45 @@ data.raw["mining-drill"]["electric-mining-drill"].fast_replaceable_group = "elec
 
 --=================================================================================================
 
-local mining_drill2_tint = {r = 5 / 255, g = 164 / 255, b = 208 / 255, a = 0.3}
+local md2_tint = {r = 5 / 255, g = 164 / 255, b = 208 / 255, a = 0.3}
 
-local mining_drill2_item = table.deepcopy(data.raw["item"]["electric-mining-drill"])
-mining_drill2_item.name = "electric-mining-drill-2"
-mining_drill2_item.icons = {{icon = mining_drill2_item.icon, tint = mining_drill2_tint}}
-mining_drill2_item.place_result = "electric-mining-drill-2"
-mining_drill2_item.order = "a[items]-b[electric-mining-drill]"
+local md2_item = table.deepcopy(data.raw["item"]["electric-mining-drill"])
+md2_item.name = "electric-mining-drill-2"
+md2_item.icons = {{icon = md2_item.icon, tint = md2_tint}}
+md2_item.place_result = "electric-mining-drill-2"
+md2_item.order = "a[items]-b[electric-mining-drill]"
 
-local mining_drill2 = table.deepcopy(data.raw["mining-drill"]["electric-mining-drill"])
-mining_drill2.name = "electric-mining-drill-2"
-mining_drill2.minable = {mining_time = 0.3, result = "electric-mining-drill-2"}
-mining_drill2.mining_speed = 1
-mining_drill2.energy_usage = "150kW"
-mining_drill2.energy_source.emissions_per_minute = 15
-mining_drill2.resource_searching_radius = 3.49
-mining_drill2.module_specification = {module_slots = 2}
-mining_drill2.next_upgrade = "kr-electric-mining-drill-mk2"
-mining_drill2.fast_replaceable_group = "electric-mining-drill"
-mining_drill2.icons = {{icon = mining_drill2_item.icon, tint = mining_drill2_tint}}
+local md2 = table.deepcopy(data.raw["mining-drill"]["electric-mining-drill"])
+md2.name = "electric-mining-drill-2"
+md2.minable = {mining_time = 0.3, result = "electric-mining-drill-2"}
+md2.mining_speed = 1
+md2.energy_usage = "250kW"
+md2.energy_source.emissions_per_minute = 22.5
+md2.resource_searching_radius = 3.49
+md2.module_specification = {module_slots = 2}
+md2.next_upgrade = "kr-electric-mining-drill-mk2"
+md2.fast_replaceable_group = "electric-mining-drill"
+md2.icons = {{icon = md2_item.icon, tint = md2_tint}}
 
-mining_drill2.graphics_set.animation.north.layers[1].tint = mining_drill2_tint
-mining_drill2.graphics_set.animation.north.layers[1].hr_version.tint = mining_drill2_tint
-mining_drill2.graphics_set.animation.east.layers[1].tint = mining_drill2_tint
-mining_drill2.graphics_set.animation.east.layers[1].hr_version.tint = mining_drill2_tint
-mining_drill2.graphics_set.animation.south.layers[1].tint = mining_drill2_tint
-mining_drill2.graphics_set.animation.south.layers[1].hr_version.tint = mining_drill2_tint
-mining_drill2.graphics_set.animation.west.layers[1].tint = mining_drill2_tint
-mining_drill2.graphics_set.animation.west.layers[1].hr_version.tint = mining_drill2_tint
+md2.graphics_set.animation.north.layers[1].tint = md2_tint
+md2.graphics_set.animation.north.layers[1].hr_version.tint = md2_tint
+md2.graphics_set.animation.east.layers[1].tint = md2_tint
+md2.graphics_set.animation.east.layers[1].hr_version.tint = md2_tint
+md2.graphics_set.animation.south.layers[1].tint = md2_tint
+md2.graphics_set.animation.south.layers[1].hr_version.tint = md2_tint
+md2.graphics_set.animation.west.layers[1].tint = md2_tint
+md2.graphics_set.animation.west.layers[1].hr_version.tint = md2_tint
 
-mining_drill2.wet_mining_graphics_set.animation.north.layers[1].tint = mining_drill2_tint
-mining_drill2.wet_mining_graphics_set.animation.north.layers[1].hr_version.tint = mining_drill2_tint
-mining_drill2.wet_mining_graphics_set.animation.east.layers[1].tint = mining_drill2_tint
-mining_drill2.wet_mining_graphics_set.animation.east.layers[1].hr_version.tint = mining_drill2_tint
-mining_drill2.wet_mining_graphics_set.animation.south.layers[1].tint = mining_drill2_tint
-mining_drill2.wet_mining_graphics_set.animation.south.layers[1].hr_version.tint = mining_drill2_tint
-mining_drill2.wet_mining_graphics_set.animation.west.layers[1].tint = mining_drill2_tint
-mining_drill2.wet_mining_graphics_set.animation.west.layers[1].hr_version.tint = mining_drill2_tint
+md2.wet_mining_graphics_set.animation.north.layers[1].tint = md2_tint
+md2.wet_mining_graphics_set.animation.north.layers[1].hr_version.tint = md2_tint
+md2.wet_mining_graphics_set.animation.east.layers[1].tint = md2_tint
+md2.wet_mining_graphics_set.animation.east.layers[1].hr_version.tint = md2_tint
+md2.wet_mining_graphics_set.animation.south.layers[1].tint = md2_tint
+md2.wet_mining_graphics_set.animation.south.layers[1].hr_version.tint = md2_tint
+md2.wet_mining_graphics_set.animation.west.layers[1].tint = md2_tint
+md2.wet_mining_graphics_set.animation.west.layers[1].hr_version.tint = md2_tint
 
-local mining_drill2_recipe = {
+local md2_recipe = {
     type = "recipe",
     name = "electric-mining-drill-2",
     ingredients = {
@@ -60,7 +60,7 @@ local mining_drill2_recipe = {
     energy_required = 2
 }
 
-local mining_drill2_tech = {
+local md2_tech = {
     type = "technology",
     name = "electric-mining-drill-2",
     icon = "__base__/graphics/icons/electric-mining-drill.png",
@@ -80,15 +80,15 @@ local mining_drill2_tech = {
     order = "c-c-b"
 }
 
-data:extend{mining_drill2_item, mining_drill2, mining_drill2_recipe, mining_drill2_tech}
+data:extend{md2_item, md2, md2_recipe, md2_tech}
 
 --=================================================================================================
 
 local mk2 = data.raw["mining-drill"]["kr-electric-mining-drill-mk2"]
 mk2.mining_speed = 2
-mk2.energy_usage = "225kW"
+mk2.energy_usage = "625kW"
 mk2.next_upgrade = "electric-mining-drill-3"
-mk2.energy_source.emissions_per_minute = 30
+mk2.energy_source.emissions_per_minute = 45
 
 KDO.replace_ingredient("kr-electric-mining-drill-mk2", "electric-mining-drill", "electric-mining-drill-2", 2)
 
@@ -98,45 +98,45 @@ KDO.add_research_ingredient("kr-electric-mining-drill-mk2", "production-science-
 
 --=================================================================================================
 
-local mining_drill3_tint = {r = 75 / 255, g = 0 / 255, b = 130 / 255, a = 0.3}
+local md3_tint = {r = 75 / 255, g = 0 / 255, b = 130 / 255, a = 0.3}
 
-local mining_drill3_item = table.deepcopy(data.raw["item"]["electric-mining-drill"])
-mining_drill3_item.name = "electric-mining-drill-3"
-mining_drill3_item.icons = {{icon = mining_drill3_item.icon, tint = mining_drill3_tint}}
-mining_drill3_item.place_result = "electric-mining-drill-3"
-mining_drill3_item.order = "a[items]-c[electric-mining-drill]"
+local md3_item = table.deepcopy(data.raw["item"]["electric-mining-drill"])
+md3_item.name = "electric-mining-drill-3"
+md3_item.icons = {{icon = md3_item.icon, tint = md3_tint}}
+md3_item.place_result = "electric-mining-drill-3"
+md3_item.order = "a[items]-c[electric-mining-drill]"
 
-local mining_drill3 = table.deepcopy(data.raw["mining-drill"]["electric-mining-drill"])
-mining_drill3.name = "electric-mining-drill-3"
-mining_drill3.minable = {mining_time = 0.3, result = "electric-mining-drill-3"}
-mining_drill3.mining_speed = 3
-mining_drill3.energy_usage = "300kW"
-mining_drill3.energy_source.emissions_per_minute = 45
-mining_drill3.resource_searching_radius = 4.49
-mining_drill3.module_specification = {module_slots = 3}
-mining_drill3.next_upgrade = "kr-electric-mining-drill-mk3"
-mining_drill3.fast_replaceable_group = "electric-mining-drill"
-mining_drill3.icons = {{icon = mining_drill3_item.icon, tint = mining_drill3_tint}}
+local md3 = table.deepcopy(data.raw["mining-drill"]["electric-mining-drill"])
+md3.name = "electric-mining-drill-3"
+md3.minable = {mining_time = 0.3, result = "electric-mining-drill-3"}
+md3.mining_speed = 3
+md3.energy_usage = "940kW"
+md3.energy_source.emissions_per_minute = 67.5
+md3.resource_searching_radius = 4.49
+md3.module_specification = {module_slots = 3}
+md3.next_upgrade = "kr-electric-mining-drill-mk3"
+md3.fast_replaceable_group = "electric-mining-drill"
+md3.icons = {{icon = md3_item.icon, tint = md3_tint}}
 
-mining_drill3.graphics_set.animation.north.layers[1].tint = mining_drill3_tint
-mining_drill3.graphics_set.animation.north.layers[1].hr_version.tint = mining_drill3_tint
-mining_drill3.graphics_set.animation.east.layers[1].tint = mining_drill3_tint
-mining_drill3.graphics_set.animation.east.layers[1].hr_version.tint = mining_drill3_tint
-mining_drill3.graphics_set.animation.south.layers[1].tint = mining_drill3_tint
-mining_drill3.graphics_set.animation.south.layers[1].hr_version.tint = mining_drill3_tint
-mining_drill3.graphics_set.animation.west.layers[1].tint = mining_drill3_tint
-mining_drill3.graphics_set.animation.west.layers[1].hr_version.tint = mining_drill3_tint
+md3.graphics_set.animation.north.layers[1].tint = md3_tint
+md3.graphics_set.animation.north.layers[1].hr_version.tint = md3_tint
+md3.graphics_set.animation.east.layers[1].tint = md3_tint
+md3.graphics_set.animation.east.layers[1].hr_version.tint = md3_tint
+md3.graphics_set.animation.south.layers[1].tint = md3_tint
+md3.graphics_set.animation.south.layers[1].hr_version.tint = md3_tint
+md3.graphics_set.animation.west.layers[1].tint = md3_tint
+md3.graphics_set.animation.west.layers[1].hr_version.tint = md3_tint
 
-mining_drill3.wet_mining_graphics_set.animation.north.layers[1].tint = mining_drill3_tint
-mining_drill3.wet_mining_graphics_set.animation.north.layers[1].hr_version.tint = mining_drill3_tint
-mining_drill3.wet_mining_graphics_set.animation.east.layers[1].tint = mining_drill3_tint
-mining_drill3.wet_mining_graphics_set.animation.east.layers[1].hr_version.tint = mining_drill3_tint
-mining_drill3.wet_mining_graphics_set.animation.south.layers[1].tint = mining_drill3_tint
-mining_drill3.wet_mining_graphics_set.animation.south.layers[1].hr_version.tint = mining_drill3_tint
-mining_drill3.wet_mining_graphics_set.animation.west.layers[1].tint = mining_drill3_tint
-mining_drill3.wet_mining_graphics_set.animation.west.layers[1].hr_version.tint = mining_drill3_tint
+md3.wet_mining_graphics_set.animation.north.layers[1].tint = md3_tint
+md3.wet_mining_graphics_set.animation.north.layers[1].hr_version.tint = md3_tint
+md3.wet_mining_graphics_set.animation.east.layers[1].tint = md3_tint
+md3.wet_mining_graphics_set.animation.east.layers[1].hr_version.tint = md3_tint
+md3.wet_mining_graphics_set.animation.south.layers[1].tint = md3_tint
+md3.wet_mining_graphics_set.animation.south.layers[1].hr_version.tint = md3_tint
+md3.wet_mining_graphics_set.animation.west.layers[1].tint = md3_tint
+md3.wet_mining_graphics_set.animation.west.layers[1].hr_version.tint = md3_tint
 
-local mining_drill3_recipe = {
+local md3_recipe = {
     type = "recipe",
     name = "electric-mining-drill-3",
     ingredients = {
@@ -150,7 +150,7 @@ local mining_drill3_recipe = {
     energy_required = 2
 }
 
-local mining_drill3_tech = {
+local md3_tech = {
     type = "technology",
     name = "electric-mining-drill-3",
     icon = "__base__/graphics/icons/electric-mining-drill.png",
@@ -172,14 +172,14 @@ local mining_drill3_tech = {
     order = "a-b-c"
 }
 
-data:extend{mining_drill3_item, mining_drill3, mining_drill3_recipe, mining_drill3_tech}
+data:extend{md3_item, md3, md3_recipe, md3_tech}
 
 --=================================================================================================
 
 local mk3 = data.raw["mining-drill"]["kr-electric-mining-drill-mk3"]
 mk3.mining_speed = 4
-mk3.energy_usage = "350kW"
-mk3.energy_source.emissions_per_minute = 60
+mk3.energy_usage = "1560kW"
+mk3.energy_source.emissions_per_minute = 90
 
 KDO.replace_ingredient("kr-electric-mining-drill-mk3", "kr-electric-mining-drill-mk2", "electric-mining-drill-3", 2)
 KDO.replace_prerequisite("kr-electric-mining-drill-mk3", "kr-electric-mining-drill-mk2", "electric-mining-drill-3")

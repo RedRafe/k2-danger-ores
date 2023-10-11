@@ -1,4 +1,26 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.1.1
+Date: 2023-10-10
+  Changes:
+  - Added Electrolysis Mk.2
+  - Added stacked matter conversion recipes for Deadlock Belt-boxes & Loaders mod
+  - Changed icons for Compact rare metals (& stacked version)
+  - Increased energy consumption for some machines
+    - Electric mining drills 2, 3, Mk.2, Mk.3
+    - Electric furnace Mk.2
+  - Increased pollution emission for some machines
+    - Electric mining drills 2, 3, Mk.2, Mk.3
+    - Oil refineries Mk.2, Mk.3
+    - Chemical plants Mk.2
+    - Assembling machine 4
+  - Reduced chlorine consumption in "compact-rare-metals > raw-rare-metals" recipe
+  - Replaced "raw-rare-metals" with "compact-raw-rare-metals" in matter conversion recipes
+  Fixes:
+  - Fixed upgrade planner for electric mining drills
+  - Fixed steam & nuclear stats of Mk.2 entities to be the same ratio of Mk.1
+  - Fixed creep not spawning under biter nests
+
+---------------------------------------------------------------------------------------------------
 Version: 0.1.0
 Date: 2023-10-04
   Info:

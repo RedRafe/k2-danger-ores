@@ -24,3 +24,43 @@
  8 M coal          (15%)
  5 M rare          ( 9%)
  1 M uranium       ( 2%)
+
+
+K2 (x10)
+{
+  ["advanced-tech-card"] = 6917500,
+  ["automation-science-pack"] = 670400,
+  ["basic-tech-card"] = 77160,
+  ["chemical-science-pack"] = 566150,
+  ["logistic-science-pack"] = 655650,
+  ["matter-tech-card"] = 6922500,
+  ["military-science-pack"] = 243350,
+  ["production-science-pack"] = 7217500,
+  ["singularity-tech-card"] = 6772500,
+  ["space-science-pack"] = 6814500,
+}
+
+K2 (x20)
+{
+  ["advanced-tech-card"] = 13835000,
+  ["automation-science-pack"] = 1340650,
+  ["basic-tech-card"] = 154160,
+  ["chemical-science-pack"] = 1132150,
+  ["logistic-science-pack"] = 1311150,
+  ["matter-tech-card"] = 13845000,
+  ["military-science-pack"] = 486550,
+  ["production-science-pack"] = 14435000,
+  ["singularity-tech-card"] = 13545000,
+  ["space-science-pack"] = 13629000,
+  ["utility-science-pack"] = 14603000
+}
+
+Vanilla (x20)
+{
+  ["automation-science-pack"] = 1137110,
+  ["chemical-science-pack"] = 955000,
+  ["logistic-science-pack"] = 1126600,
+  ["military-science-pack"] = 558400,
+  ["production-science-pack"] = 454500,
+  ["utility-science-pack"] = 587000
+}

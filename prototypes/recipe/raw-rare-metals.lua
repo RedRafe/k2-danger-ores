@@ -10,7 +10,7 @@ data:extend({
     ingredients =
     {
       { type = "item", name = "compact-raw-rare-metals", amount = 10 },
-      { type = "fluid", name = "chlorine", amount = 25 },
+      { type = "fluid", name = "chlorine", amount = 8 },
     },
     results =
     {

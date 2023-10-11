@@ -1,5 +1,34 @@
 local lib = {}
 
+
+-- ============================================================================
+-- STRING UTIL LIBRARY
+lib.string = {}
+
+---@param inputstr string
+---@param start string
+function lib.string.startsWith(inputstr, start) 
+  return inputstr:sub(1, #start) == start 
+end
+
+-- Multiply String Value
+---@param text string
+---@param coefficient number
+function lib.string.msv(text, coefficient)
+  if not text then return nil end
+  local n = string.match(text, "%d+")
+  local s = string.match(text, "%a+")
+  return tostring(tonumber(n) * coefficient) .. s
+end
+
+---@param name string
+function lib.string.find_base(name)
+  return string.gsub(name, "^sp%-([1-9][0-9]?)%-", "")
+end
+
+-- ============================================================================
+
+
 -- ADD a prerequisite to a given technology
 function lib.add_prerequisite(tech_name, prerequisite)
   local technology = data.raw.technology[tech_name]
@@ -117,6 +146,13 @@ function lib.whitelist_productivity(recipe_name)
   end
 end
 
+-- Returns true if a recipe has an ingredient
+function lib.has_ingredient(recipe_name, ingredient)
+  return data.raw.recipe[recipe_name] and (
+        has_ingredient(data.raw.recipe[recipe_name], ingredient) or
+        has_ingredient(data.raw.recipe[recipe_name].normal, ingredient))
+end
+
 -- ADD a given quantity of ingredient to target recipe
 function lib.add_ingredient(recipe_name, ingredient, quantity)
   local is_fluid = not not data.raw.fluid[ingredient]
@@ -146,7 +182,27 @@ function lib.remove_ingredient(recipe_name, old)
   end
 end
 
+-- MULTIPLY the cost, energy, and results of a recipe by a multiple
+function lib.multiply_recipe(recipe_name, multiple, options)
+  if data.raw.recipe[recipe_name] then
+    multiply_recipe(data.raw.recipe[recipe_name], multiple)
+    multiply_recipe(data.raw.recipe[recipe_name].normal, multiple)
+    multiply_recipe(data.raw.recipe[recipe_name].expensive, multiple)
+	end
+end
+
 --=================================================================================================
+
+function has_ingredient(recipe, ingredient)
+  if recipe ~= nil and recipe.ingredients ~= nil then
+    for i, existing in pairs(recipe.ingredients) do
+      if existing[1] == ingredient or existing.name == ingredient then
+        return true
+      end
+    end
+  end
+  return false
+end
 
 function add_ingredient(recipe, ingredient, quantity, is_fluid)
   if recipe ~= nil and recipe.ingredients ~= nil then
@@ -206,6 +262,52 @@ function remove_ingredient(recipe, old)
     end
     if index > -1 then
       table.remove(recipe.ingredients, index)
+    end
+  end
+end
+
+function multiply_recipe(recipe, multiple)
+  if recipe then
+    if recipe.energy_required then
+      recipe.energy_required = recipe.energy_required * multiple
+    else
+      recipe.energy_required = 0.5 * multiple  -- 0.5 is factorio default
+    end
+    if recipe.result_count then
+      recipe.result_count = recipe.result_count * multiple
+    end
+    if recipe.results then
+      for i, result in pairs(recipe.results) do
+        if result.name then
+          if result.amount then
+            result.amount = result.amount * multiple
+          end
+          if result.amount_min ~= nil then
+            result.amount_min = result.amount_min * multiple
+            result.amount_max = result.amount_max * multiple
+          end
+          if result.catalyst_amount then
+            result.catalyst_amount = result.catalyst_amount * multiple
+          end
+        end
+        if result[1] then
+          result[2] = result[2] * multiple
+        end
+      end
+    end
+    if not recipe.results and not recipe.result_count then
+      -- implicit one item result
+      recipe.result_count = multiple
+    end
+    if recipe.ingredients then
+      for i, ingredient in pairs(recipe.ingredients) do
+        if ingredient.name then
+          ingredient.amount = ingredient.amount * multiple
+        end
+        if ingredient[1] then
+          ingredient[2] = ingredient[2] * multiple
+        end
+      end
     end
   end
 end

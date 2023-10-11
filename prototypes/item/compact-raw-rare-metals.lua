@@ -3,7 +3,7 @@ data:extend({
   {
 		type = "item",
 		name = "compact-raw-rare-metals",
-		icon = "__k2-danger-ores__/graphics/icons/rare.png",
+		icon = "__k2-danger-ores__/graphics/icons/cluster-rare.png",
 		icon_size = 64,
 		icon_mipmaps = 4,
     pictures =

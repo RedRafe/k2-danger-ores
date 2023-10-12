@@ -55,12 +55,12 @@ local he2 = table.deepcopy(data.raw["boiler"]["heat-exchanger"])
 he2.name = "heat-exchanger-2"
 he2.minable.result = "heat-exchanger-2"
 he2.fast_replaceable_group = "heat-exchanger"
-he2.target_temperature = he2.target_temperature * 2 --1000
+he2.target_temperature = he2.target_temperature * 2 - 15 --1000
 he2.energy_consumption = KDO.string.msv(he2.energy_consumption, 2) --"20MW"
-he2.energy_source.max_temperature = he2.energy_source.max_temperature * 2
+he2.energy_source.max_temperature = he2.energy_source.max_temperature * 2 - 15
 he2.energy_source.specific_heat = KDO.string.msv(he2.energy_source.specific_heat, 2) --"2MJ"
 he2.energy_source.max_transfer = KDO.string.msv(he2.energy_source.max_transfer, 2) --"4GW"
-he2.energy_source.min_working_temperature = he2.energy_source.min_working_temperature * 2
+he2.energy_source.min_working_temperature = 815
 he2.icons = {{icon = he2_item.icon, tint = he2_tint}}
 he2.structure.north.layers[1].filename = "__k2-danger-ores__/graphics/entity/heatex-N-idle-2.png"
 he2.structure.north.layers[1].hr_version.filename = "__k2-danger-ores__/graphics/entity/hr-heatex-N-idle-2.png"

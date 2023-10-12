@@ -13,7 +13,7 @@ local b2 = table.deepcopy(data.raw["boiler"]["boiler"])
 b2.name = "boiler-2"
 b2.minable.result = "boiler-2"
 b2.target_temperature = b2.target_temperature * 2 - 15
-b2.energy_consumption = KDO.string.msv("1.5MW", 2)
+b2.energy_consumption = "3MW"
 b2.energy_source.emissions_per_minute = b2.energy_source.emissions_per_minute * 2.5
 b2.fast_replaceable_group = "boiler"
 b2.icons = {{icon = b2_item.icon, tint = b2_tint}}

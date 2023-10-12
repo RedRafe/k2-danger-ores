@@ -25,7 +25,7 @@ local function edit(e)
     local t = 0
     for ___, tile in pairs(tiles) do
       if dist(tile.position, pos) <= REACH then
-        if (tile.name and tile.name == "landfill") or (tile.hidden_tiile and tile.hidden_tile == "landfill") then
+        if (tile.name and tile.name == "landfill") or (tile.hidden_tile and tile.hidden_tile == "landfill") then
           t = t + 1
           new_tiles[t] = { name = "water", position = tile.position }
         end

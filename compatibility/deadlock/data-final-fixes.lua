@@ -36,7 +36,7 @@ deadlock.add_stack("space-research-data", nil, T3, 64)
 deadlock.add_stack("basic-tech-card", nil, T3, 64, "tool")
 deadlock.add_stack("matter-tech-card", nil, T3, 64, "tool")
 deadlock.add_stack("advanced-tech-card", nil, T3, 64, "tool")
-deadlock.add_stack("singulariry-tech-card", nil, T3, 64, "tool")
+deadlock.add_stack("singularity-tech-card", nil, T3, 64, "tool")
 -- remove fuel stacks and filters
 deadlock.destroy_stack("matter-stabilizer")
 deadlock.destroy_stack("charged-matter-stabilizer")

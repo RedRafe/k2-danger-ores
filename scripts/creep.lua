@@ -59,6 +59,47 @@ local function on_chunk_charted(e)
   end
 end
 
+--- @param area BoundingBox
+--- @param positio MapPosition
+--- @param surface LuaSurface
+--- @param name defines.events.on_chunk_generated
+--- @param tick uint
+function on_chunk_generated(e)
+  local area = e.area
+  local surface = e.surface
+  local entities = surface.find_entities_filtered({ type = { "unit-spawner" }, area = area, force = "enemy" })
+  for _, entity in pairs(entities) do
+    if entity.valid then
+      generate_creep({ entity })
+    end
+  end
+end
+
+--- @param entity LuaEntity
+--- @param name defines.event.script_raised_built
+--- @param tick uint
+local function on_entity_created(e)
+  local entity = e.entity
+  if not entity or not entity.valid then return end
+  if entity.type ~= "unit-spawner" then return end
+  generate_creep({ entity })
+end
+
+--- @param effect_id String
+--- @param surface_index uint
+--- @param source_position MapPosition
+--- @param source_entity LuaEntity
+--- @param target_position MapPosition
+--- @param target_entity LuaEntity
+--- @param name defines.event.on_script_trigger_effect
+--- @param tick uint
+local function on_trigger_entity(e)
+  if e.effect_id ~= "unit-spawner-built" then return end
+  local entity = e.target_entity
+  if not entity or not entity.valid then return end
+  generate_creep({ entity })
+end
+
 --=================================================================================================
 
 ---@type ScriptLib
@@ -72,7 +113,11 @@ Creep.on_nth_tick = {
 }
 
 Creep.events = {
-  [defines.events.on_chunk_charted] = on_chunk_charted
+  [defines.events.on_chunk_charted] = on_chunk_charted,
+  [defines.events.on_chunk_generated] = on_chunk_generated,
+  [defines.events.on_biter_base_built] = on_entity_created,
+  [defines.events.script_raised_built] = on_entity_created,
+  [defines.events.on_script_trigger_effect] = on_trigger_entity
 }
 
 return Creep

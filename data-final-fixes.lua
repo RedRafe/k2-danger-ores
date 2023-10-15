@@ -2,6 +2,7 @@
 
 --[[ mandatory ]] require 'prototypes.entity.intergalactic-transceiver'
 --[[  optional ]] require 'prototypes.entity.mining-drills'
+--[[ mandatory ]] require 'prototypes.entity.unit-spawner'
 
 --[[ mandatory ]] require 'prototypes.recipe.uranium-processing'
 --[[ mandatory ]] require 'prototypes.recipe.uranium-processing-2'

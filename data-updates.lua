@@ -1,5 +1,3 @@
-KDO = require 'prototypes.data-util'
-
 --[[  optional ]] require 'prototypes.entity.assembling-machine'
 --[[  optional ]] require 'prototypes.entity.chemical'
 --[[  optional ]] require 'prototypes.entity.electric-furnace'

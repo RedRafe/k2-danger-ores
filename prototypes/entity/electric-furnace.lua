@@ -52,6 +52,10 @@ data:extend({
     icon_size = 256,
     icon_mipmaps = 4,
     icon = "__base__/graphics/technology/advanced-material-processing-2.png",
+    icons = {{
+      icon = "__base__/graphics/technology/advanced-material-processing-2.png",
+      tint = ef2._tint
+    }},
     effects = {{type = "unlock-recipe", recipe = ef2.name}},
     prerequisites = {"advanced-material-processing-2", "production-science-pack"},
     unit = {

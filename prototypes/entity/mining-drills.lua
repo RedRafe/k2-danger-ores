@@ -55,8 +55,12 @@ data:extend({
     type = "technology",
     name = emd2.name,
     icon = "__base__/graphics/icons/electric-mining-drill.png",
-    icon_size = 64,
+    icon_size = 256,
     icon_mipmaps = 4,
+    icons = {{
+      icon = "__Krastorio2Assets__/technologies/electric-mining-drill.png",
+      tint = emd2._tint
+    }},
     effects = {{type = "unlock-recipe", recipe = emd2.name}},
     prerequisites = {"kr-electric-mining-drill", "chemical-science-pack"},
     unit = {
@@ -121,8 +125,12 @@ data:extend({
     type = "technology",
     name = emd4.name,
     icon = "__base__/graphics/icons/electric-mining-drill.png",
-    icon_size = 64,
+    icon_size = 256,
     icon_mipmaps = 4,
+    icons = {{
+      icon = "__Krastorio2Assets__/technologies/electric-mining-drill.png",
+      tint = emd4._tint
+    }},
     effects = {{type = "unlock-recipe", recipe = emd4.name}},
     prerequisites = {emd3.name, "production-science-pack", "utility-science-pack"},
     unit = {

@@ -194,6 +194,10 @@ data:extend({{
   icon_size = 256,
   icon_mipmaps = 4,
   icon = "__base__/graphics/technology/oil-gathering.png",
+  icons = {{
+    icon = "__base__/graphics/technology/oil-gathering.png",
+    tint = cp2._tint
+  }},
   prerequisites = {"oil-processing", "production-science-pack"},
   effects = {
     {type = "unlock-recipe", recipe = cp2.name},

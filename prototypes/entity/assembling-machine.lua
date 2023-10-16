@@ -49,6 +49,10 @@ data:extend({
   icon_size = 256,
   icon_mipmaps = 4,
   icon = "__base__/graphics/technology/automation-3.png",
+  icons = {{
+    icon = "__base__/graphics/technology/automation-3.png",
+    tint = am4._tint
+  }},
   effects = {{type = "unlock-recipe", recipe = am4.name}},
   prerequisites = {"speed-module-2", "automation-3"},
   unit = {

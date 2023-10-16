@@ -142,6 +142,10 @@ data:extend({{
   icon_size = 256,
   icon_mipmaps = 4,
   icon = "__base__/graphics/technology/nuclear-power.png",
+  icons = {{
+    icon = "__base__/graphics/technology/nuclear-power.png",
+    tint = nr2._tint
+  }},
   prerequisites = {"nuclear-power", "production-science-pack"},
   effects = {
     {type = "unlock-recipe", recipe = st2.name},

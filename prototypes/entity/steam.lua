@@ -94,9 +94,13 @@ data:extend({
 data:extend({{
   type = "technology",
   name = "steam-engine-2",
-  icon_size = 64,
+  icon_size = 256,
   icon_mipmaps = 4,
-  icon = "__base__/graphics/icons/steam-engine.png",
+  icon = "__Krastorio2Assets__/technologies/steam-engine.png",
+  icons = {{
+    icon = "__Krastorio2Assets__/technologies/steam-engine.png",
+    tint = se2._tint
+  }},
   prerequisites = {"chemical-science-pack"},
   effects = {
     {type = "unlock-recipe", recipe = bo2.name},

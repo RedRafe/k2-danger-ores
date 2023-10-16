@@ -12,8 +12,7 @@ local emd5 = KDO.config["kr-electric-mining-drill-mk3"]
 
 --=================================================================================================
 
-data.raw[emd1.type][emd1.name].next_upgrade = emd1.next_upgrade
-data.raw[emd1.type][emd1.name].fast_replaceable_group = emd1.fast_replaceable_group
+KDO.update_protytype(emd1)
 
 --=================================================================================================
 
@@ -75,15 +74,8 @@ data:extend({
 
 --=================================================================================================
 
-local mk2 = data.raw[emd3.type][emd3.name]
-mk2.mining_speed = emd3.mining_speed
-mk2.energy_usage = emd3.energy_usage
-mk2.next_upgrade = emd3.next_upgrade
-mk2.fast_replaceable_group = emd3.fast_replaceable_group
-mk2.energy_source.emissions_per_minute = emd3.energy_source.emissions_per_minute
-
+KDO.update_protytype(emd3)
 KDO.replace_ingredient(emd3.name, emd1.name, emd2.name, 2)
-
 KDO.replace_prerequisite(emd3._technology, emd1._technology, emd2.name)
 KDO.replace_prerequisite(emd3._technology, "engine", "production-science-pack")
 KDO.add_research_ingredient(emd3._technology, "production-science-pack")
@@ -150,12 +142,7 @@ data:extend({
 
 --=================================================================================================
 
-local mk3 = data.raw[emd5.type][emd5.name]
-mk3.mining_speed = emd5.mining_speed
-mk3.energy_usage = emd5.energy_usage
-mk3.fast_replaceable_group = emd5.fast_replaceable_group
-mk3.energy_source.emissions_per_minute = emd5.energy_source.emissions_per_minute
-
+KDO.update_protytype(emd5)
 KDO.replace_ingredient(emd5.name, emd3.name, emd4.name, 2)
 KDO.replace_prerequisite(emd5._technology, emd3.name, emd4.name)
 KDO.replace_prerequisite(emd5._technology,  "kr-imersium-processing" , "kr-advanced-tech-card")

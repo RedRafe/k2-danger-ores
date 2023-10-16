@@ -8,8 +8,7 @@ local am5 = KDO.config["kr-advanced-assembling-machine"]
 
 --=================================================================================================
 
-data.raw[am3.type][am3.name].next_upgrade = am3.next_upgrade
-data.raw[am3.type][am3.name].fast_replaceable_group = am3.fast_replaceable_group
+KDO.update_protytype(am3)
 
 --=================================================================================================
 
@@ -66,6 +65,7 @@ data:extend({
   }
 })
 
-data.raw[am5.type][am5.name].module_specification = am5.module_specification
+KDO.update_protytype(am5)
+
 KDO.replace_ingredient(am5.name, am3.name, am4.name)
 KDO.replace_prerequisite(am5._technology, am3._technology, am4._technology)

@@ -4,6 +4,11 @@ local PURPLE   = {r =  75 / 255, g =   0 / 255, b = 130 / 255, a = 0.8}
 local YELLOW   = {r = 255 / 255, g = 255 / 255, b =   0 / 255, a = 0.8}
 local AQUA     = {r = 127 / 255, g = 255 / 255, b = 212 / 255, a = 0.8}
 local LAVENDER = {r = 147 / 255, g = 112 / 255, b = 219 / 255, a = 0.8}
+local CRIMSON  = {r = 220 / 255, g =  20 / 255, b =  60 / 255, a = 0.8}
+local TEAL     = {r =   0 / 255, g = 128 / 255, b = 128 / 255, a = 0.8}
+-- choosing the best tints for blind players too
+local COLOR_MK2 = TEAL
+local COLOR_Mk3 = CRIMSON
 
 return {
   ["assembling-machine-3"] = {
@@ -17,7 +22,7 @@ return {
     name = "assembling-machine-4",
     type = "assembling-machine",
     _base = "assembling-machine-3",
-    _tint = LAVENDER,
+    _tint = COLOR_Mk3,
     order = "c1[assembling-machine-4]",
     crafting_speed = 2,
     energy_usage = "500kW",
@@ -48,7 +53,7 @@ return {
     name = "chemical-plant-2",
     type = "assembling-machine",
     _base = "chemical-plant",
-    _tint = AQUA,
+    _tint = COLOR_MK2,
     crafting_speed = 2,
     energy_usage = "420kW",
     module_specification = { module_slots = 5, module_info_max_icons_per_row = 5 },
@@ -64,13 +69,13 @@ return {
     name = "oil-refinery",
     type = "assembling-machine",
     fast_replaceable_group = "oil-refinery",
-    energy_source = { emissions_per_minute = "oil-refinery-2" },
+    next_upgrade = "oil-refinery-2"
   },
   ["oil-refinery-2"] = {
     name = "oil-refinery-2",
     type = "assembling-machine",
     _base = "oil-refinery",
-    _tint = AQUA,
+    _tint = COLOR_MK2,
     crafting_speed = 2,
     energy_usage = "840kW",
     module_specification = { module_slots = 4 },
@@ -82,7 +87,7 @@ return {
     name = "oil-refinery-3",
     type = "assembling-machine",
     _base = "oil-refinery",
-    _tint = LAVENDER,
+    _tint = COLOR_Mk3,
     crafting_speed = 8,
     energy_usage = "1600kW",
     module_specification = {module_slots = 6},
@@ -100,7 +105,7 @@ return {
     name = "kr-electrolysis-plant-2",
     type = "assembling-machine",
     _base = "kr-electrolysis-plant",
-    _tint = LAVENDER,
+    _tint = COLOR_Mk3,
     crafting_speed = 4,
     energy_usage = "1940kW",
     module_specification = { module_slots = 4 },
@@ -118,7 +123,7 @@ return {
     name = "electric-furnace-2",
     type = "assembling-machine",
     _base = "electric-furnace",
-    _tint = AQUA,
+    _tint = COLOR_MK2,
     crafting_speed = 4,
     energy_usage = "905kW",
     module_specification = { module_slots = 3, module_info_icon_shift = {0, 0.8} },
@@ -142,7 +147,7 @@ return {
     name = "electric-mining-drill-2",
     type = "mining-drill",
     _base = "electric-mining-drill",
-    _tint = AQUA,
+    _tint = COLOR_MK2,
     mining_speed = 1,
     energy_usage = "250kW",
     module_specification = { module_slots = 2 },
@@ -165,7 +170,7 @@ return {
     name = "electric-mining-drill-3",
     type = "mining-drill",
     _base = "electric-mining-drill",
-    _tint = LAVENDER,
+    _tint = COLOR_Mk3,
     mining_speed = 3,
     energy_usage = "940kW",
     module_specification = { module_slots = 3 },
@@ -193,11 +198,11 @@ return {
     name = "nuclear-reactor-2",
     type = "reactor",
     _base = "nuclear-reactor",
-    _tint = AQUA,
+    _tint = COLOR_MK2,
     consumption = "500MW",
     fast_replaceable_group = "nuclear-reactor",
     heat_buffer = {
-      max_temperature = 2000,
+      max_temperature = 1000,
       max_transfer = "200GW",
       minimum_glow_temperature = 350,
       specific_heat = "100MJ"
@@ -213,12 +218,12 @@ return {
     name = "heat-exchanger-2",
     type = "boiler",
     _base = "heat-exchanger",
-    _tint = AQUA,
+    _tint = COLOR_MK2,
     fast_replaceable_group = "heat-exchanger",
     energy_consumption = "100MW",
     target_temperature = 815,
     energy_source = {
-      max_temperature = 1985,
+      max_temperature = 1000,
       max_transfer = "20GW",
       min_working_temperature = 815,
       minimum_glow_temperature = 350,
@@ -235,7 +240,7 @@ return {
     name = "steam-turbine-2",
     type = "generator",
     _base = "steam-turbine",
-    _tint = AQUA,
+    _tint = COLOR_MK2,
     fast_replaceable_group = "steam-engine",
     max_power_output = "20MW",
     scale_fluid_usage = true,
@@ -251,7 +256,7 @@ return {
     name = "boiler-2",
     type = "boiler",
     _base = "boiler",
-    _tint = AQUA,
+    _tint = COLOR_MK2,
     fast_replaceable_group = "boiler",
     energy_consumption = "3MW",
     target_temperature = 315,
@@ -267,7 +272,7 @@ return {
     name = "steam-engine-2",
     type = "generator",
     _base = "steam-engine",
-    _tint = AQUA,
+    _tint = COLOR_MK2,
     fast_replaceable_group = "steam-engine",
     max_power_output = "1.5MW",
     scale_fluid_usage = true,

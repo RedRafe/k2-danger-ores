@@ -13,8 +13,7 @@ local ep2 = KDO.config["kr-electrolysis-plant-2"]
 
 --=================================================================================================
 
-data.raw[cp1.type][cp1.name].next_upgrade = cp1.next_upgrade
-data.raw[cp1.type][cp1.name].fast_replaceable_group = cp1.fast_replaceable_group
+KDO.update_protytype(cp1)
 
 --=================================================================================================
 
@@ -54,13 +53,12 @@ data:extend({
   KDO.make_tier(cp2),
 })
 
-data.raw[cp3.type][cp3.name].module_specification.module_slots = cp3.module_specification.module_slots
+KDO.update_protytype(cp3)
 KDO.add_ingredient(cp3.name, cp2.name, 2)
 
 --=================================================================================================
 
-data.raw[or1.type][or1.name].next_upgrade = or1.next_upgrade
-data.raw[or1.type][or1.name].fast_replaceable_group = or1.fast_replaceable_group
+KDO.update_protytype(or1)
 
 --=================================================================================================
 
@@ -145,8 +143,7 @@ KDO.add_unlock(or3._technology, or3.name)
 
 --=================================================================================================
 
-data.raw[ep1.type][ep1.name].next_upgrade = ep1.next_upgrade
-data.raw[ep1.type][ep1.name].fast_replaceable_group = ep1.fast_replaceable_group
+KDO.update_protytype(ep1)
 
 --=================================================================================================
 

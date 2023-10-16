@@ -9,8 +9,7 @@ local se2 = KDO.config["steam-engine-2"]
 
 --=================================================================================================
 
-data.raw[bo1.type][bo1.name].next_upgrade = bo1.next_upgrade
-data.raw[bo1.type][bo1.name].fast_replaceable_group = bo1.fast_replaceable_group
+KDO.update_protytype(bo1)
 
 --=================================================================================================
 
@@ -50,8 +49,7 @@ data:extend({
 
 --=================================================================================================
 
-data.raw[se1.type][se1.name].next_upgrade = se1.next_upgrade
-data.raw[se1.type][se1.name].fast_replaceable_group = se1.fast_replaceable_group
+KDO.update_protytype(se1)
 
 --=================================================================================================
 

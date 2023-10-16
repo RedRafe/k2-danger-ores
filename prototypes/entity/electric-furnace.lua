@@ -8,8 +8,7 @@ local ef3 = KDO.config["kr-advanced-furnace"]
 
 --=================================================================================================
 
-data.raw[ef1.type][ef1.name].next_upgrade = ef1.next_upgrade
-data.raw[ef1.type][ef1.name].fast_replaceable_group = ef1.fast_replaceable_group
+KDO.update_protytype(ef1)
 
 --=================================================================================================
 

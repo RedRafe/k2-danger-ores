@@ -15,7 +15,3 @@
 --[[  optional ]] require 'prototypes.modules.expensive-robots'
 
 --[[ mandatory ]] require 'compatibility.deadlock.data-final-fixes'
-
-local function llog(obj)
-  log(serpent.block(obj))
-end

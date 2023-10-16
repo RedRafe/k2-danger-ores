@@ -11,8 +11,7 @@ local st2 = KDO.config["steam-turbine-2"]
 
 --=================================================================================================
 
-data.raw[nr1.type][nr1.name].next_upgrade = nr1.next_upgrade
-data.raw[nr1.type][nr1.name].fast_replaceable_group = nr1.fast_replaceable_group
+KDO.update_protytype(nr1)
 
 --=================================================================================================
 
@@ -54,8 +53,7 @@ data:extend({
 
 --=================================================================================================
 
-data.raw[he1.type][he1.name].next_upgrade = he1.next_upgrade
-data.raw[he1.type][he1.name].fast_replaceable_group = he1.fast_replaceable_group
+KDO.update_protytype(he1)
 
 --=================================================================================================
 
@@ -95,8 +93,7 @@ data:extend({
 
 --=================================================================================================
 
-data.raw[st1.type][st1.name].next_upgrade = st1.next_upgrade
-data.raw[st1.type][st1.name].fast_replaceable_group = st1.fast_replaceable_group
+KDO.update_protytype(st1)
 
 --=================================================================================================
 

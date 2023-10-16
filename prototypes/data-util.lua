@@ -1,6 +1,5 @@
 local lib = {}
 
-
 -- ============================================================================
 -- STRING UTIL LIBRARY
 lib.string = {}
@@ -26,8 +25,128 @@ function lib.string.find_base(name)
   return string.gsub(name, "^sp%-([1-9][0-9]?)%-", "")
 end
 
--- ============================================================================
+--=================================================================================================
 
+local function has_ingredient(recipe, ingredient)
+  if recipe ~= nil and recipe.ingredients ~= nil then
+    for i, existing in pairs(recipe.ingredients) do
+      if existing[1] == ingredient or existing.name == ingredient then
+        return true
+      end
+    end
+  end
+  return false
+end
+
+local function add_ingredient(recipe, ingredient, quantity, is_fluid)
+  if recipe ~= nil and recipe.ingredients ~= nil then
+    for i, existing in pairs(recipe.ingredients) do
+      if existing[1] == ingredient or existing.name == ingredient then
+        return
+      end
+    end
+    if is_fluid then
+      table.insert(recipe.ingredients, {type="fluid", name=ingredient, amount=quantity})
+    else
+      table.insert(recipe.ingredients, {ingredient, quantity})
+    end
+  end
+end
+
+local function replace_ingredient(recipe, old, new, amount, multiply)
+	if recipe ~= nil and recipe.ingredients ~= nil then
+    for i, existing in pairs(recipe.ingredients) do
+      if existing[1] == new or existing.name == new then
+        return
+      end
+    end
+		for i, ingredient in pairs(recipe.ingredients) do 
+			if ingredient.name == old then 
+        ingredient.name = new 
+        if amount then
+          if multiply then
+            ingredient.amount = amount * ingredient.amount
+          else
+            ingredient.amount = amount
+          end
+        end
+      end
+			if ingredient[1] == old then 
+        ingredient[1] = new
+        if amount then
+          if multiply then
+            ingredient[2] = amount * ingredient[2]
+          else
+            ingredient[2] = amount
+          end
+        end
+      end
+		end
+	end
+end
+
+local function remove_ingredient(recipe, old)
+  index = -1
+	if recipe ~= nil and recipe.ingredients ~= nil then
+		for i, ingredient in pairs(recipe.ingredients) do 
+      if ingredient.name == old or ingredient[1] == old then
+        index = i
+        break
+      end
+    end
+    if index > -1 then
+      table.remove(recipe.ingredients, index)
+    end
+  end
+end
+
+local function multiply_recipe(recipe, multiple)
+  if recipe then
+    if recipe.energy_required then
+      recipe.energy_required = recipe.energy_required * multiple
+    else
+      recipe.energy_required = 0.5 * multiple  -- 0.5 is factorio default
+    end
+    if recipe.result_count then
+      recipe.result_count = recipe.result_count * multiple
+    end
+    if recipe.results then
+      for i, result in pairs(recipe.results) do
+        if result.name then
+          if result.amount then
+            result.amount = result.amount * multiple
+          end
+          if result.amount_min ~= nil then
+            result.amount_min = result.amount_min * multiple
+            result.amount_max = result.amount_max * multiple
+          end
+          if result.catalyst_amount then
+            result.catalyst_amount = result.catalyst_amount * multiple
+          end
+        end
+        if result[1] then
+          result[2] = result[2] * multiple
+        end
+      end
+    end
+    if not recipe.results and not recipe.result_count then
+      -- implicit one item result
+      recipe.result_count = multiple
+    end
+    if recipe.ingredients then
+      for i, ingredient in pairs(recipe.ingredients) do
+        if ingredient.name then
+          ingredient.amount = ingredient.amount * multiple
+        end
+        if ingredient[1] then
+          ingredient[2] = ingredient[2] * multiple
+        end
+      end
+    end
+  end
+end
+
+-- ============================================================================
 
 -- ADD a prerequisite to a given technology
 function lib.add_prerequisite(tech_name, prerequisite)
@@ -193,123 +312,56 @@ end
 
 --=================================================================================================
 
-function has_ingredient(recipe, ingredient)
-  if recipe ~= nil and recipe.ingredients ~= nil then
-    for i, existing in pairs(recipe.ingredients) do
-      if existing[1] == ingredient or existing.name == ingredient then
-        return true
-      end
-    end
+local function lr_hr_tint(obj, tint)
+  if not obj then return end
+  obj.tint = tint
+  if obj.hr_version ~= nil then obj.hr_version.tint = tint end
+end
+
+local function tint_layers(obj, tint)
+  if not obj then return end
+  if obj.filename then lr_hr_tint(obj, tint) end
+  if obj.layers and obj.layers[1] then lr_hr_tint(obj.layers[1], tint) end
+  for _, d in pairs({"north", "east", "south", "west"}) do tint_layers(obj[d], tint) end
+end
+
+local function apply_tint(obj, tint)
+  if not obj or not tint or type(obj) ~= 'table' then return end
+  obj.icons = {{ icon = obj.icon, tint = tint }}
+  tint_layers(obj.animation, tint)
+  tint_layers(obj.horizontal_animation, tint)
+  tint_layers(obj.vertical_animation, tint)
+  tint_layers(obj.structure, tint)
+  tint_layers(obj.patch, tint)
+  tint_layers(obj.picture, tint)
+  if obj.graphics_set then tint_layers(obj.graphics_set.animation, tint) end
+  if obj.wet_mining_graphics_set then tint_layers(obj.wet_mining_graphics_set.animation, tint) end
+  for _, fb in pairs(obj.fluid_boxes or {}) do 
+    if type(fb) == 'table' then tint_layers(fb.pipe_picture, tint) end
   end
-  return false
+  for _, wv in pairs(obj.working_visualisations or {}) do tint_layers(wv.animation, tint) end
 end
 
-function add_ingredient(recipe, ingredient, quantity, is_fluid)
-  if recipe ~= nil and recipe.ingredients ~= nil then
-    for i, existing in pairs(recipe.ingredients) do
-      if existing[1] == ingredient or existing.name == ingredient then
-        return
+local function r_copy(target, source)
+  for k, v in pairs(source) do
+    if tostring(k):find('^_') ~= 1 then
+      if type(v) == 'table' then
+        target[k] = target[k] or {}
+        r_copy(source[k], target[k])
+      else
+        target[k] = v
       end
-    end
-    if is_fluid then
-      table.insert(recipe.ingredients, {type="fluid", name=ingredient, amount=quantity})
-    else
-      table.insert(recipe.ingredients, {ingredient, quantity})
-    end
-  end
-end
-
-function replace_ingredient(recipe, old, new, amount, multiply)
-	if recipe ~= nil and recipe.ingredients ~= nil then
-    for i, existing in pairs(recipe.ingredients) do
-      if existing[1] == new or existing.name == new then
-        return
-      end
-    end
-		for i, ingredient in pairs(recipe.ingredients) do 
-			if ingredient.name == old then 
-        ingredient.name = new 
-        if amount then
-          if multiply then
-            ingredient.amount = amount * ingredient.amount
-          else
-            ingredient.amount = amount
-          end
-        end
-      end
-			if ingredient[1] == old then 
-        ingredient[1] = new
-        if amount then
-          if multiply then
-            ingredient[2] = amount * ingredient[2]
-          else
-            ingredient[2] = amount
-          end
-        end
-      end
-		end
-	end
-end
-
-function remove_ingredient(recipe, old)
-  index = -1
-	if recipe ~= nil and recipe.ingredients ~= nil then
-		for i, ingredient in pairs(recipe.ingredients) do 
-      if ingredient.name == old or ingredient[1] == old then
-        index = i
-        break
-      end
-    end
-    if index > -1 then
-      table.remove(recipe.ingredients, index)
     end
   end
 end
 
-function multiply_recipe(recipe, multiple)
-  if recipe then
-    if recipe.energy_required then
-      recipe.energy_required = recipe.energy_required * multiple
-    else
-      recipe.energy_required = 0.5 * multiple  -- 0.5 is factorio default
-    end
-    if recipe.result_count then
-      recipe.result_count = recipe.result_count * multiple
-    end
-    if recipe.results then
-      for i, result in pairs(recipe.results) do
-        if result.name then
-          if result.amount then
-            result.amount = result.amount * multiple
-          end
-          if result.amount_min ~= nil then
-            result.amount_min = result.amount_min * multiple
-            result.amount_max = result.amount_max * multiple
-          end
-          if result.catalyst_amount then
-            result.catalyst_amount = result.catalyst_amount * multiple
-          end
-        end
-        if result[1] then
-          result[2] = result[2] * multiple
-        end
-      end
-    end
-    if not recipe.results and not recipe.result_count then
-      -- implicit one item result
-      recipe.result_count = multiple
-    end
-    if recipe.ingredients then
-      for i, ingredient in pairs(recipe.ingredients) do
-        if ingredient.name then
-          ingredient.amount = ingredient.amount * multiple
-        end
-        if ingredient[1] then
-          ingredient[2] = ingredient[2] * multiple
-        end
-      end
-    end
+function lib.make_tier(obj)
+  local base = table.deepcopy(data.raw[obj.type][obj._base])
+  r_copy(base, obj)
+  if obj._tint and obj._tint ~= false then
+    apply_tint(base, obj._tint)
   end
+  return base
 end
 
 --=================================================================================================

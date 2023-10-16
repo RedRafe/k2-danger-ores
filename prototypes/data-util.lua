@@ -347,9 +347,9 @@ local function r_copy(target, source)
     if tostring(k):find('^_') ~= 1 then
       if type(v) == 'table' then
         target[k] = target[k] or {}
-        r_copy(source[k], target[k])
+        r_copy(target[k], source[k])
       else
-        target[k] = v
+        target[k] = source[k]
       end
     end
   end

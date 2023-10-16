@@ -18,7 +18,7 @@ modded servers. All of the games hosted are available to the public and our comm
 levels and experience. You can find out servers by searching for "RedMew" in the multiplayer lobby.
 
 ## The Community
-You can join the RedMew community on Discord by visiting http://redmew.com/discord
+You can join the RedMew community on Discord by visiting [discord/RedMew](https://discord.gg/6Hz4X2X)
 
 To join a RedMew Factorio server, follow the following steps in Factorio:
  - From the main menu, press "Play"

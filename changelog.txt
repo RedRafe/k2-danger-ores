@@ -1,6 +1,6 @@
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.2
-Date: 2023-10-15
+Date: 2023-10-24
   Changes:
   - Waterfill shortcut now places walkable "mud-water" instead of regular "water"
   - Waterfill shortcut will not be available to players who spent <15min total on map

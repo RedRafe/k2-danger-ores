@@ -4,6 +4,7 @@ Date: 2023-10-24
   Changes:
   - Removed wood-to-matter recipe
   - Removed cargo wagons bonus inventory
+  - Removed rail interaction from 1x1 loaders
 
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.2

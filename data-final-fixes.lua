@@ -13,5 +13,6 @@
 --[[  optional ]] require 'prototypes.modules.bonus-belt-speed'
 --[[  optional ]] require 'prototypes.modules.bonus-inventory'
 --[[  optional ]] require 'prototypes.modules.expensive-robots'
+--[[ mandatory ]] require 'prototypes.modules.loaders'
 
 --[[ mandatory ]] require 'compatibility.deadlock.data-final-fixes'

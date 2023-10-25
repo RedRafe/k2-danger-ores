@@ -366,6 +366,9 @@ function lib.make_tier(obj)
   local base = table.deepcopy(data.raw[obj.type][obj._base])
   base.next_upgrade = nil
   r_copy(base, obj)
+  if base.minable and base.minable.result then
+    base.minable.result = base.name
+  end
   if obj._tint and obj._tint ~= false then
     apply_tint(base, obj._tint)
   end

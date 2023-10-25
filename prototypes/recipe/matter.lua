@@ -1,6 +1,3 @@
-KDO.remove_recipe_effect('kr-matter-rare-metals-processing', 'raw-rare-metals-to-matter')
-KDO.remove_recipe_effect('kr-matter-rare-metals-processing', 'matter-to-raw-rare-metals')
-
 local matter = require "__Krastorio2__.lib.public.data-stages.matter-util"
 
 -- Compact rare metals
@@ -23,3 +20,10 @@ local compact = {
   },
 }
 matter.createMatterRecipe(compact.k2matter)
+
+KDO.remove_recipe_effect('kr-matter-rare-metals-processing', 'raw-rare-metals-to-matter')
+KDO.remove_recipe_effect('kr-matter-rare-metals-processing', 'matter-to-raw-rare-metals')
+
+-- disable wood conversion into matter
+data.raw.recipe['wood-to-matter'].hidden = true
+KDO.remove_recipe_effect('kr-matter-processing', 'wood-to-matter')
